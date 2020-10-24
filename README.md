@@ -107,7 +107,11 @@ UID: 3035535080
          - **Werewolfs**
             
             Werewolfs always take action together. At the first night, you will know yout teammates, and you three have to choose a good people to kill each night. During the daytime, you have to pretend you are a good people, and try not to be found and executed. 
-         
+            
+
+## Featurs List
+
+- [x] **Random game sets or status**
        
        
       
