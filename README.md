@@ -91,6 +91,11 @@ UID: 3035535080
      - **Bad people:**
      
        As Bad people, your goal is to kill or execute every good people.
+            
+         - Werewolfs
+            
+            Werewolfs always take action together. At the first night, you will know yout teammates, and you three have to choose a good people to kill each night. During the daytime, you have to pretend you are a good people, and try not to be found and executed. 
+         
        
        
       
