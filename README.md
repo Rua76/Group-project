@@ -112,6 +112,8 @@ UID: 3035535080
 ## Featurs List
 
 - [x] **Random game sets or status**
+
+- [x] **Data structure for storing game status**
        
        
       
