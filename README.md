@@ -77,7 +77,7 @@ UID: 3035535080
          
        As good people, your goal is to kill or execute every werewolf. 
        
-         - Villager
+         - **Villager
              
             Villagers do not have any special ability. They can only vote claim and vote during the daytime.
             
@@ -85,18 +85,18 @@ UID: 3035535080
          
             As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character at the daytime, so every other player will follow you in the voting, but this also expose you to the werewolfs, be careful!
             
-         - Witch
+         - **Witch
          
             You have two potions:
             one to save the werewolves's victim
             one to eliminate a player
             You can only use each potion once during the game. You can’t use both potions during the same night. You can’t save yourself if you has been attacked by the werewolves on the first night.
             
-         - Hunter
+         - **Hunter
             
             If you are killed by werewolves or eliminated by vote, you must kill a player of their choice.
             
-         - Guard
+         - **Guard
          
             As a guard, you can choose to protect a people once a night. The one you take guard will not be killed at that night.
             
@@ -104,7 +104,7 @@ UID: 3035535080
      
        As Bad people, your goal is to kill or execute every good people.
             
-         - Werewolfs
+         - **Werewolfs
             
             Werewolfs always take action together. At the first night, you will know yout teammates, and you three have to choose a good people to kill each night. During the daytime, you have to pretend you are a good people, and try not to be found and executed. 
          
