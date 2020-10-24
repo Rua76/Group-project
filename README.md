@@ -54,6 +54,9 @@ UID:
          
          The calling process will let the werewolves take actions first and then special villagers.
          
+       - Day:
+       
+         
         
        
    - **Group:**   
