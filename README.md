@@ -51,6 +51,10 @@ UID:
        - Night: 
        
          The system calls the characters that have abilities one at a time, to perform his/her role's special action.
+         
+         The calling process will let the werewolves take actions first and then special villagers.
+         
+         
      
     
      
