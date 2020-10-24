@@ -112,6 +112,8 @@ UID: 3035535080
 ## Featurs List
 
 - [x] **Random game sets or status**
+   
+   During the game, the logic behind NPC's action involves random process. For instance, if all three werewolfs are NPCs, they will randomly choose other players to kill at each night. But once the oracle claims her identity, and the guard is still alive, the werewolfs have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
 
 - [x] **Data structure for storing game status**
        
