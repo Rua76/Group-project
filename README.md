@@ -22,17 +22,17 @@ UID: 3035535080
    - **Background**
    
      - Werewolves of Miller's Hollow stands on the background of a peaceful village and one day several werewolves infiltrated into this place, aiming at killing all people in this village.
-     - However, feeling of something horrible will happen, people in this village do not choose to sit still waiting for death. With some sepcial villagers as the leaders, all villagers unite together to fight for their survival.
-     - Obviously things are not always easy. Werewolves have the ability of pretending themselves as people during the daytime and they are smart enough to choose to kill people only at midnight.
-     - Considering the ability of werewolves, villagers choose to hold a survivors debates on every morning and vote to lynch a guy they think is a werewolf.
+     - However, feeling of something horrible will happen, people in this village do not choose to sit still waiting for death. With some special villagers as the leaders, all villagers unite together to fight for their survival.
+     - Obvious things are not always easy. Werewolves have the ability of pretending themselves as people during the daytime and they are smart enough to choose to kill people only at midnight.
+     - Considering the ability of werewolves, villagers choose to hold a survivors debate on every morning and vote to lynch a guy they think is a werewolf.
      - **As a player,** 
        - **if you are the werewolf,** try your best to pretend yourself smartly and apply all your wisdom to kill all the normal/special villagers at midnight with your werewolf friends.
-       - **if you are the villager,** try your best to protect yourself and other, make use of every clues the system and players provided to figure out werewolves and lynch them through voting.
+       - **if you are the villager,** try your best to protect yourself and others, make use of every clues the system and players provided to figure out werewolves and lynch them through voting.
 
 2. **Game Rules**
    - **Group Size:**
    
-     - We design this game as a table for 9 - 12 people. Since this is a offline game, the individual player will join in the game with remaining computer players.
+     - We design this game as a table for 9 - 12 people. Since this is an offline game, the individual player will join in the game with remaining computer players.
      - Character Distribution:
        
         9 Players: 3 Werewolves,  3 Special Villagers, 3 Normal Villagers
@@ -46,7 +46,7 @@ UID: 3035535080
     
      - **At the beginning of a game:**
        
-       The random process will provide each player a character. The players look at their cards without revealing their roles.
+       The random process will provide each player with a character. The players look at their cards without revealing their roles.
      - **The game then takes place in alternating phases:**
        - **Night:** 
        
@@ -66,7 +66,7 @@ UID: 3035535080
           
           **_Werewolves win:_** all the special villagers **_or_** all the normal villagers are killed.
           
-          **_Villagers win:_** all the werewolves are kiled.
+          **_Villagers win:_** all the werewolves are killed.
        
          
         
@@ -79,11 +79,11 @@ UID: 3035535080
        
          - **Villager**
              
-            Villagers do not have any special ability. They can only vote claim and vote during the daytime.
+            Villagers do not have any special abilities. They can only vote claim and vote during the daytime.
             
          - **Oracle**
          
-            As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character at the daytime, so every other player will follow you in the voting, but this also expose you to the werewolfs, be careful!
+            As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character in the daytime, so every other player will follow you in the voting, but this also exposes you to the werewolves, be careful!
             
          - **Witch**
          
@@ -98,39 +98,39 @@ UID: 3035535080
             
          - **Guard**
          
-            As a guard, you can choose to protect a people once a night. The one you take guard will not be killed at that night.
+            As a guard, you can choose to protect a player once a night. The one you take guard will not be killed at that night.
             
      - **Bad people:**
      
        As Bad people, your goal is to kill or execute every good people.
             
-         - **Werewolfs**
+         - **Werewolves**
             
-            Werewolfs always take action together. At the first night, you will know yout teammates, and you three have to choose a good people to kill each night. During the daytime, you have to pretend you are a good people, and try not to be found and executed. 
+            Werewolves always take action together. On the first night, you will know your teammates, and you three have to choose a good person to kill each night. During the daytime, you have to pretend you are a good character, and try not to be found and executed. 
             
 
-## Featurs List
+## Features List
 
 - [x] **Random game sets or status**
    
-   During the game, the logic behind NPC's action involves random process. For instance, if all three werewolfs are NPCs, they will randomly choose other players to kill at each night. But once the oracle claims her identity, and the guard is still alive, the werewolfs have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
+   During the game, the logic behind NPC's action involves a random process. For instance, if all three werewolves are NPCs, they will randomly choose other players to kill at each night. But once the oracle claims her identity, and the guard is still alive, the werewolves have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
 
 - [x] **Data structure for storing game status**
 
-   We will use data structures to store the game status, such as arrays, variables, etc. For example, all the players still alive will be stored in a array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. 
+   We will use data structures to store the game status, such as arrays, variables, etc. For example, all the players still alive will be stored in an array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. 
 
 - [x] **Dynamic Memory Management**
   - At the beginning of the game, the program lets the player to command the number of participants, thus controlling the total memory usage at the start.
-  - During the alternating days and nights, variables containing texts and commands from both players and computers will be cleared and resused instead of redeclare new ones, so as to lessen memory wastage.
-  - Also, since we apply randomness during the whole gaming process, lists insetions and deletions will be executed dynamically.
+  - During the alternating days and nights, variables containing texts and commands from both players and computers will be cleared and reused instead of redeclaring new ones, so as to lessen memory wastage.
+  - Also, since we apply randomness during the whole gaming process, lists insertions and deletions will be executed dynamically.
 
 - [x] **File Input/Output**
-  - One of the most attractive part of our game is the inference through clues and texts provided from system and other players (PCs). Therefore, we require systematic language/text packages for the program to read and write so as to process or record the game.
+  - One of the most attractive parts of our game is the inference through clues and texts provided by the system and other players (PCs). Therefore, we require systematic language/text packages for the program to read and write so as to process or record the game.
   
 - [x] **Program Codes in Multiple Files**
-  - As our game is quite a complex one, we need .hpp to systematically declare functions and some vairables we need throughout the whole program.
-  - We plan to separate each of our sepcial villager into a particualr .cpp in order to make the main.cpp clear for running the main game process.
-  - Considering situations a character under a player or a PC controls can be quite different, we need similar but different files to achieve this and make our best to let the PC players perform their logic.
+  - As our game is quite a complex one, we need .hpp to systematically declare functions and some variables we need throughout the whole program.
+  - We plan to separate each of our special villager into a particular .cpp in order to make the main.cpp clear for running the main game process.
+  - Considering situations a character under a player or a PC controls can be quite different, we need similar but different files to achieve this and do our best to let the PC players perform their logic.
        
       
          
