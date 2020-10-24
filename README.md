@@ -9,7 +9,7 @@ UID: 3035535573
 
 **Yu Haoshengzhe**
 
-UID:
+UID: 3035535080
 
 ## **Game Description with Basic Rules**
 1. **Basic Information**
@@ -71,9 +71,28 @@ UID:
             
          - Oracle
          
-            As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character at the daytime, so every other player will follow you in the voting
+            As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character at the daytime, so every other player will follow you in the voting, but this also expose you to the werewolfs, be careful!
             
+         - Witch
+         
+            You have two potions:
+            one to save the werewolves's victim
+            one to eliminate a player
+            You can only use each potion once during the game. You can’t use both potions during the same night. You can’t save yourself if you has been attacked by the werewolves on the first night.
+            
+         - Hunter
+            
+            If you are killed by werewolves or eliminated by vote, you must kill a player of their choice.
+            
+         - Guard
+         
+            As a guard, you can choose to protect a people once a night. The one you take guard will not be killed at that night.
+            
+     - **Bad people:**
      
+       As Bad people, your goal is to kill or execute every good people.
+       
+       
       
          
      
