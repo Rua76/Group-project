@@ -48,13 +48,25 @@ UID: 3035535080
        
        The random process will provide each player a character. The players look at their cards without revealing their roles.
      - **The game then takes place in alternating phases:**
-       - Night: 
+       - **Night:** 
        
          The system calls the characters that have abilities one at a time, to perform his/her role's special action.
          
          The calling process will let the werewolves take actions first and then special villagers.
          
-       - Day:
+       - **Day:**
+       
+         The system reports the name(s) of the player(s) which have been killed during the night.
+         
+         Those killed are not allowed to speak to the living for the rest of the game.
+         
+         Then, all the survivors give their statements one by one and vote to lynch a player they think is a werewolf.
+         
+       - **The game will automatically end if:**
+          
+          **_Werewolves win:_** all the special villagers **_or_** all the normal villagers are killed.
+          
+          **_Villagers win:_** all the werewolves are kiled.
        
          
         
