@@ -118,7 +118,19 @@ UID: 3035535080
 - [x] **Data structure for storing game status**
 
    We will use data structures to store the game status, such as arrays, variables, etc. For example, all the players still alive will be stored in a array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. 
-       
+
+- [x] **Dynamic Memory Management**
+  - At the beginning of the game, the program lets the player to command the number of participants, thus controlling the total memory usage at the start.
+  - During the alternating days and nights, variables containing texts and commands from both players and computers will be cleared and resused instead of redeclare new ones, so as to lessen memory wastage.
+  - Also, since we apply randomness during the whole gaming process, lists insetions and deletions will be executed dynamically.
+
+- [x] **File Input/Output**
+  - One of the most attractive part of our game is the inference through clues and texts provided from system and other players (PCs). Therefore, we require systematic language/text packages for the program to read and write so as to process or record the game.
+  
+- [x] **Program Codes in Multiple Files**
+  - As our game is quite a complex one, we need .hpp to systematically declare functions and some vairables we need throughout the whole program.
+  - We plan to separate each of our sepcial villager into a particualr .cpp in order to make the main.cpp clear for running the main game process.
+  - Considering situations a character under a player or a PC controls can be quite different, we need similar but different files to achieve this and make our best to let the PC players perform their logic.
        
       
          
