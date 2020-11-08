@@ -16,4 +16,4 @@ struct Player{
     string role;
 };
 
-void game_ini (Game game, Player player);
+void game_ini (Game game, Player player[13]);
