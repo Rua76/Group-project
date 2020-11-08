@@ -11,8 +11,9 @@ struct Game {
 };
 
 struct Player{
-    int player_index[20];
-    string role[20];
+    int player_index;
+    int player_role
+    string role;
 };
 
 void game_ini (Game game, Player player);
