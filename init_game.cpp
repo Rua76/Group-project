@@ -27,7 +27,7 @@ void game_ini (Game game, Player player[12]){
       		case 11: { player[i].role = "Witch" ;break;}
       		case 12: { player[i].role = "Hunter" ;break; }
     		}//switch
-    		cout << "Player " <<  player[i].player_index << " is " << player[i].role << endl;//运行可删
+    		cout << "Player " <<  player[i].player_index+1 << " is " << player[i].role << endl;//运行可删
     
 	}
 }
