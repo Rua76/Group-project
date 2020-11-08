@@ -1,26 +1,8 @@
 #include <iostream>
+#include "init_game.h"
 using namespace std;
 
-struct Game {
-    int player_num;
-    int turn = 1;
-    int wolf_num;
-    int villager_num;
-    int good_num;
-    int seer_num;
-    int witch_num;
-    int guard_num;
-    int hunter_num;
-};
-Game game;
-
-struct Player{
-    int player_index[20];
-    string role[20];
-};
-Player player;
-
-void game_ini (){
+void game_ini (Game game, Player player){
     // choose player number
     cout << "select the number of players between 9-12: ";
     cin >> game.player_num;
