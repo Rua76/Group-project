@@ -1,4 +1,4 @@
-class Game{
+struct Game {
     int player_num;
     int turn = 1;
     int wolf_num;
@@ -8,11 +8,11 @@ class Game{
     int witch_num;
     int guard_num;
     int hunter_num;
-  public:
-    void game_ini ();
 };
 
-class Player{
+struct Player{
     int player_index[20];
     string role[20];
 };
+
+void game_ini (Game game, Player player);
