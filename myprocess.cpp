@@ -92,13 +92,24 @@ int wolfPC(){
     return kill;
 }
 
-void hunterhuman(){
-    
+void hunter_player(Player player[12]){
+	int command;
+	cin >> command;
+	player[command].life -= 1;
+	cout << "Actually I am the hunter, fuck you off bitch!" << endl;
+}
+	
+void hunter_player(Player player[12]){
+	int command;
+	int j=0;
+	for (int i=0; i<12; ++i){
+		if (player[i].life > 0) j+=1;
+	}
+	command = rand()%j
+	player[command].life -= 1;
+	cout << "Actually I am the hunter, fuck you off bitch!" << endl;
 }
 
-void hunterPC(){
-    
-}
 //int checking_command;
 //cin >> checking_command;
 void seer_player_checking(Player player[12], int command){
