@@ -104,8 +104,7 @@ void hunterPC(){
 void seer_player_checking(Player player[12], int command){
 	if (player[command].role == "Werewolf") cout << "Shh... That guy is a werewolf !";
 	else {cout << "Hey, that guy is a good one."};
-		return command;
-		 }
+	}
 //int checking_num;
 //checking_num = rand()%(sizeof(arr)/sizeof(arr[0]))
 bool seer_PC_checking(Player player[12],int num ){ 
@@ -246,7 +245,7 @@ void villager_pc_debating(){
 	srand((int)time(0));
 		cout << text[rand()%4] << endl;
 	}
-void villager(){
+void villager_player(){
 	ifstream fin;
 	fin.open("villager_Player.txt");
 	string text[4];
