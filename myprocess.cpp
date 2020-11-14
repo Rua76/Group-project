@@ -45,7 +45,7 @@ void game_ini (Game game, Player player[12]){
               case 7:
             case 8: { player[i].role = "Werewolf" ;break;}
               case 9: { player[i].role = "Seer";break;}
-              case 10:
+                    case 10:
               case 11: { player[i].role = "Witch" ;break;}
               case 12: { player[i].role = "Hunter" ;break; }
             }//switch
@@ -70,12 +70,8 @@ int wolfhuman (){
     cin >> themantokill;
     for (int i = 0; i < 12; i++){
         if (player[i].player_index + 1 == themantokill){
-            if (player[i].good && player[i].role != "Villager"){
-            player[i].life -= 1;
-            }
-            else if (player[i].good && player[i].role == "Villager"){
+            if (player[i].good)
                 player[i].life -= 1;
-            }
             else
                 break;
         }
@@ -88,24 +84,11 @@ int wolfPC(){
     while (game.goodman_list[kill] == 0 || player[kill].good == false)
     kill = rand() % 12;
     if (game.goodman_list[kill] != 0){
-        if (player[kill].good && player[kill].role != "Villager"){
-            cout << game.goodman_list[kill] << " " << player[kill].role << endl;
+        if (player[kill].good && player[kill].role != "Villager")
             player[kill].life -= 1;
-            }
-        else if (player[kill].good && player[kill].role == "Villager"){
-            cout << game.goodman_list[kill] << " " << player[kill].role << endl;
+        else if (player[kill].good && player[kill].role == "Villager")
             player[kill].life -= 1;
-            }
-
         }
-    cout << "------------------------------" << endl;
-    cout << game.goodman_list[kill] << " " << player[kill].role << endl;
-    cout << game.god_num << " " << game.villager_num << endl;
-    cout << "Choose the one to kill tonight: " << endl;
-    for (int i = 0; i < 12; i++){
-        if (game.goodman_list[i] != 0)
-        cout << game.goodman_list[i] << endl;
-    }
     return kill;
 }
 
@@ -144,7 +127,7 @@ int guardhuman(){
         if (player[i].player_index + 1 == guard)
             player[i].guard = 1;
     }
-    return guard;
+    return guard-1;
 }
 
 
@@ -180,13 +163,42 @@ void night (){
         guarded = guardhuman();
     else
         guarded = guardPC();
-    
+    cout << "Killed:" << killed << endl;
+    cout << "Guarded:" << guarded << endl;
     //at the end of the night
+    //guard
+    if (guarded == killed){
+        player[guarded].life = 1;
+        player[guarded].guard = 0;
+    }
     
     
+    //if died
+    for (int i = 0; i<12; i++){
+
+        if (player[i].life == 0){
+            if (game.goodman_list[i] != 0){
+                if (player[i].good && player[i].role != "Villager"){
+                    game.goodman_list[i] = 0;
+                    game.player_list[i] = 0;
+                    game.god_num -= 1;
+                    }
+                else if (player[i].good && player[i].role == "Villager"){
+                    game.goodman_list[i] = 0;
+                    game.player_list[i] = 0;
+                    game.villager_num -= 1;
+                    }
+            }
+        }
+    }//for
+    cout << "living list" << endl;
+    for (int i = 0; i < 12; i++){
+        if (game.goodman_list[i] != 0)
+        cout << game.goodman_list[i] << endl;
+    }
+    cout << game.god_num << " " << game.villager_num << endl;
     game.turn++;
 }
-
 int main(int argc, const char * argv[]) {
     //Game start
     cout << "intro" << endl;
@@ -217,5 +229,3 @@ int main(int argc, const char * argv[]) {
         cout << "Werewolves win!" << endl;
     return 0;
 }
-    
-
