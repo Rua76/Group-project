@@ -197,8 +197,8 @@ int guardPC(){
 }
 
 void seer_player_checking(Player player[12], int command){
-    if (player[command-1].role == "Werewolf") cout << "Shh... That guy is a werewolf !";
-    else {cout << "Hey, that guy is a good one.";};
+    if (player[command-1].role == "Werewolf") cout << "Shh... That guy is a werewolf !" << endl;
+    else {cout << "Hey, that guy is a good one." << endl;};
     }
 //int checking_num;
 //checking_num = rand()%(sizeof(arr)/sizeof(arr[0]))
