@@ -615,7 +615,6 @@ void vote(){
 }
 
 
-
 void daytime(){
     cout << "\n";
     cout << "Day Time" << " "<< game.turn << endl;
@@ -715,4 +714,5 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+
 
