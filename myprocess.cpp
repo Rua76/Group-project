@@ -112,7 +112,7 @@ void hunter_player(Player player[12]){
     cin >> command;
     player[command].life -= 1;
     cout << "Actually I am the hunter, so let's die together !" << endl;
-    cout << "Player " << command << " has been killed by the hunter." << endl;
+    cout << "Player " << command + 1 << " has been killed by the hunter." << endl;
 }
     
 void hunter_PC(Player player[12]){
@@ -124,7 +124,7 @@ void hunter_PC(Player player[12]){
     command = rand()%j;
     player[command].life -= 1;
     cout << "Actually I am the hunter, so let's die together !'" << endl;
-    cout << "Player " << command << " has been killed by the hunter." << endl;
+    cout << "Player " << command + 1 << " has been killed by the hunter." << endl;
 }
 
 
@@ -580,9 +580,16 @@ void daytime(){
         if (game.killed_tonight[i] != 0){
             cout << "Player " << game.killed_tonight[i] << " was killed last night!" << endl;
         }
-        if (player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] == 12 ) hunter_player(player);
-        else if(player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] != 12) hunter_PC(player);
-        std::this_thread::sleep_for (std::chrono::seconds(1));
+    }
+    for (int i = 0; i<2; i++){    
+		if (player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] == 12 ) {
+			hunter_player(player);
+			break;
+	    }
+        else if(player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] != 12) {
+			hunter_PC(player);
+			break;
+	    }
     }
     if (game.killed_tonight[1] == 0 && game.killed_tonight[0] == 0)
         cout << "Last night is a peaceful night! No one died!" << endl;
@@ -659,4 +666,3 @@ int main(int argc, const char * argv[]) {
         cout << "Good people win!" << endl;
     return 0;
 }
-
