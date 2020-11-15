@@ -513,7 +513,7 @@ void vote(){
                 if (game.gb == 1){
             //following players
                     if (game.suspect == 0){
-                        if (random < 2){
+                        if (random < 2 && vote != player[i].player_index + 1){
                             player[v_index].vote += 1;
                             cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
                         }
@@ -527,7 +527,7 @@ void vote(){
                         } //else
                     } //sus = 0
                     else{
-                        if (random < 3){
+                        if (random < 3 && vote != player[i].player_index + 1){
                             player[v_index].vote += 1;
                             cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
                         }
@@ -548,7 +548,7 @@ void vote(){
                         cout << "Player " << player[i].player_index + 1 << " " << "voted " << game.see + 1 << " " << endl;
                     }
                     else{
-                        if (random < 2){
+                        if (random < 2 && vote != player[i].player_index + 1){
                             player[v_index].vote += 1;
                             cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
                         }
@@ -613,7 +613,6 @@ void vote(){
             game.villager_num -= 1;
             }
 }
-
 
 void daytime(){
     cout << "\n";
