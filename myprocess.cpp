@@ -2,11 +2,16 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
+#include <bits/stdc++.h>
+#include <string> 
+#include <fstream>
+#include <thread>     
+#include <chrono>
 using namespace std;
 
 struct Game {
     int turn = 1;
-    int wolf_num = 2;
+    int wolf_num = 4;
     int god_num = 4;
     int villager_num = 4;
     int player_num = wolf_num + god_num + villager_num;
@@ -18,6 +23,9 @@ struct Game {
     int guard_index;
     int hunter_index;
     int killed_tonight[2];
+    int wolf_killed;
+    int player_checking;
+    int pc_checking;
 };
 Game game;
 
@@ -33,7 +41,7 @@ struct Player{
     int poison = 1;
 };
 
-Player player[13];
+Player player[12];
 
 void game_ini (Game game, Player player[12]){
 
@@ -47,12 +55,12 @@ void game_ini (Game game, Player player[12]){
               case 1:
               case 2:
               case 3:
-            case 4:
-                    case 5:{ player[i].role = "Villager" ;break;}
-                    case 6:{ player[i].role = "Seer";break;}//player
-              case 7:
-            case 8: { player[i].role = "Werewolf" ;break;}
-              case 9:
+              case 4:{ player[i].role = "Villager" ;break;}
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8: { player[i].role = "Werewolf" ;break;}
+                    case 9:{ player[i].role = "Seer";break;}//player
                     case 10:{ player[i].role = "Guard";break; }
                     case 11:{ player[i].role = "Witch" ;break;}
               case 12: { player[i].role = "Hunter" ;break; }
@@ -104,7 +112,7 @@ void hunter_player(Player player[12]){
     int command;
     cin >> command;
     player[command].life -= 1;
-    cout << "Actually I am the hunter, fuck you off bitch!" << endl;
+    cout << "Actually I am the hunter, so let's die together !" << endl;
 }
     
 void hunter_PC(Player player[12]){
@@ -115,16 +123,9 @@ void hunter_PC(Player player[12]){
     }
     command = rand()%j;
     player[command].life -= 1;
-    cout << "Actually I am the hunter, fuck you off bitch!" << endl;
+    cout << "Actually I am the hunter, so let's die together !'" << endl;
 }
 
-void seerhuman(){
-    
-}
-
-void seerPC(){
-    
-}
 
 void witch_player_night(Player player[12], int killed){ //death 处引入kill作为被杀人的号码
     cout << "Tonight Player " << killed + 1 << " has been killed." <<endl;
@@ -202,75 +203,6 @@ bool seer_PC_checking(Player player[12],int num){
     else {return 0;};
     }
 
-//Debate
-void pc_debating(){
-	ifstream fin;
-	fin.open("villager_PC.txt");
-	string text[4];
-	int i = 0;
-	while (!fin.eof()){
-		string inbuf;
-		getline(fin, inbuf);
-		text[i] = inbuf;
-		i+=1;
-		} 
-	srand((int)time(0));
-	cout << text[rand()%4] << endl;
-	}
-	
-void player_debating(){
-	ifstream fin;
-	fin.open("villager_Player.txt");
-	string text[4];
-	int i = 0;
-	while (!fin.eof()){
-		string inbuf;
-		getline(fin, inbuf);
-		text[i] = inbuf;
-		i+=1;
-	}
-	cout <<  "Please choose your response to debate: "<< endl;		
-		for (int i=0; i<4; ++i){
-		cout << "[" << i+1 << "]"<< " "<< text[i] << endl;			
-		}//for
-	    cout << "Please input: 1 2 3 4"<<endl;
-		int command;
-		cin >> command;
-		cout << "-------------------------------------------------------"<< endl;
-		cout << "Your response: " << text[command-1] << endl;
-	}
-
-void seer_player_debating(int checking_command, Player player[12]){
-		ifstream fin;
-		fin.open("Seer_Player.txt");
-		string text[2];
-		int i = 0;
-		while (!fin.eof()){
-			string inbuf;
-			getline(fin, inbuf);
-			text[i] = inbuf;
-			i+=1;
-		}
-		cout <<  "Please choose your response to debate: "<< endl;
-		
-		for (int i=0; i<2; ++i){
-			cout << "[" << i+1 << "]"<< " "<< text[i] << endl;
-			
-		}//for
-	    cout << "Please input: 1 2"<<endl;
-		int command;
-		cin >> command;
-		cout << "-------------------------------------------------------"<< endl;
-		cout << "Your response: " << text[command-1] << endl;
-		if (command == 1 ){
-			bool checking_result = seer_PC_checking(player, checking_command)
-			seer_pc_debating(checking_num, checking_result)
-		}//if
-		else {
-			cout << text[1] << endl;
-		}//else
-	}
-
 //NIGHT
 
 void night (){
@@ -287,6 +219,8 @@ void night (){
     else
         killed = wolfPC();
     
+    game.wolf_killed = killed;
+    
     if (player[11].role == "Seer" && player[11].life != 0){
            cout << "Hi seer, you have the right to check a person~: "<< endl;
            cout << "Which person do you want to check Ah ?: " << endl;
@@ -296,21 +230,15 @@ void night (){
            }
            cout << "\n";
            //checking
+           //int checking_command;
            int checking_command;
            cin >> checking_command;
+           game.player_checking = checking_command;
            seer_player_checking(player, checking_command);
        }
        else{
            cout << "Hi seer, you have the right to check a person~: "<< endl;
-           cout << "Which person do you want to check Ah ?: " << endl;
-           int checking_num;
-           int j=0;
-           //get the # of current alive people
-           for (int i=0; i<12; ++i){
-           if (player[i].life > 0) j+=1;
-           }
-           checking_num = rand()%j;
-           bool checking_result = seer_PC_checking(player, checking_num);
+           cout << "Which person do you want to check Ah ?: " << endl;           
        }
 
     
@@ -378,9 +306,196 @@ void night (){
 }//night
 
 
+//debating
+void seer_pc_debating(int checking_num, bool checking_result){
+		if (checking_result){
+			cout<<"I am the seer !";
+			cout<<"Last night I checked Player "<< checking_num << " and this person is a good guy." <<endl;
+		}
+		else{
+			cout<<"I am the seer !"<<endl;
+			cout<<"Last night I checked Player "<< checking_num << " and this person is a bad guy."<<endl;
+		}
+	}
+
+void seer_player_debating(int checking_command, Player player[12]){
+		ifstream fin;
+		fin.open("Seer_Player.txt");
+		string text[2];
+		int i = 0;
+		while (!fin.eof()){
+			string inbuf;
+			getline(fin, inbuf);
+			text[i] = inbuf;
+			i+=1;
+		}
+		cout <<  "Please choose your response to debate: "<< endl;
+		
+		for (int i=0; i<2; ++i){
+			cout << "[" << i+1 << "]"<< " "<< text[i] << endl;
+			
+		}//for
+	    cout << "Please input: 1 2"<<endl;
+		int command;
+		cin >> command;
+		cout << "-------------------------------------------------------"<< endl;
+		cout << "Your response: " << text[command-1] << endl;
+		if (command == 1 ){
+			bool checking_result = seer_PC_checking(player, checking_command);
+			seer_pc_debating(checking_command, checking_result);
+		}//if
+		else {
+			cout << text[1] << endl;
+		}//else
+	}
+
+void witch_player_debating(int kill, Player player[12]){
+		ifstream fin;
+		fin.open("witch_Player.txt");
+		string text[2];
+		int i = 0;
+		while (!fin.eof()){
+			string inbuf;
+			getline(fin, inbuf);
+			text[i] = inbuf;
+			i+=1;
+		}
+		cout <<  "Please choose your response to debate: "<< endl;
+		
+		for (int i=0; i<2; ++i){
+			cout << "[" << i+1 << "]"<< " "<< text[i] << endl;
+			
+		}//for
+	    cout << "Please input: 1 2"<<endl;
+		int command;
+		cin >> command;
+		cout << "-------------------------------------------------------"<< endl;
+		cout << "Your response: " << text[command-1] << endl;
+		if (command == 1 ){
+			cout << "Please choose the person you suspect: (input 0 if you are not suspecting anyone) ";
+			for (int i=0; i<12; ++i){
+				if (player[i].life > 0) cout <<"[" << i <<"]" << " ";
+			}//for
+			int suspect;
+			cin >> suspect;
+			
+			cout<<"Last night I Noticed that Player "<< kill << " has been killed." << endl;
+			if (suspect != 0) cout << " I saved him/her and I think player " << suspect << "can be the bad guy.";
+			
+		}//if
+		else {
+			cout << text[1] << endl;
+		}//else
+	}
+
+void pc_debating(){
+	ifstream fin;
+	fin.open("villager_PC.txt");
+	string text[4];
+	int i = 0;
+	while (!fin.eof()){
+		string inbuf;
+		getline(fin, inbuf);
+		text[i] = inbuf;
+		i+=1;
+		} 
+	srand((int)time(0));
+	cout << text[rand()%4] << endl;
+	}
+	
+void player_debating(){
+	ifstream fin;
+	fin.open("villager_Player.txt");
+	string text[4];
+	int i = 0;
+	while (!fin.eof()){
+		string inbuf;
+		getline(fin, inbuf);
+		text[i] = inbuf;
+		i+=1;
+	}
+	cout <<  "Please choose your response to debate: "<< endl;		
+		for (int i=0; i<4; ++i){
+		cout << "[" << i+1 << "]"<< " "<< text[i] << endl;			
+		}//for
+	    cout << "Please input: 1 2 3 4"<<endl;
+		int command;
+		cin >> command;
+		cout << "-------------------------------------------------------"<< endl;
+		cout << "Your response: " << text[command-1] << endl;
+	}
+void debate (){
+    if (player[11].role == "Villager" && player[11].life != 0){
+    	player_debating();
+	}
+	
+    if (player[11].role == "Werewolf" && player[11].life != 0){
+       cout << "Dear Werewolf, although you are strong, do remember to protect yourself ~"<<endl;
+        player_debating();       
+	}
+    
+    if (player[11].role == "Seer" && player[11].life != 0){
+        seer_player_debating(game.player_checking, player);
+       }
+    if (player[11].role == "Witch" && player[11].life != 0){ 
+		witch_player_debating(game.wolf_killed, player); 
+       }
+    if (player[11].role == "Hunter" && player[11].life != 0){
+    	player_debating();
+	}
+	if (player[11].role == "Guard" && player[11].life != 0){
+    	player_debating();
+	}
+    
+    for (int i=0; i<11; i++){
+    	
+    	if (player[i].role == "Villager" && player[i].life != 0){
+    		cout << "Player " << i+1 << ": ";
+    		pc_debating();
+    		std::this_thread::sleep_for (std::chrono::seconds(1));
+	}
+	
+    	if (player[i].role == "Werewolf" && player[i].life != 0){
+    		cout << "Player " << i+1 << ": ";
+        	pc_debating();  
+			std::this_thread::sleep_for (std::chrono::seconds(1));     
+	}
+    
+    	if (player[i].role == "Seer" && player[i].life != 0){
+    	   cout << "Player " << i+1 << ": ";
+    	   int checking_num;
+           int j=0;
+           //get the # of current alive people
+           for (int i=0; i<12; ++i){
+           if (player[i].life > 0) j+=1;
+           }
+           checking_num = rand()%j;
+           bool checking_result = seer_PC_checking(player, checking_num);
+           seer_pc_debating(checking_num, checking_result);
+           std::this_thread::sleep_for (std::chrono::seconds(1));
+       }
+    	if (player[i].role == "Witch" && player[i].life != 0){ 
+    	   cout << "Player " << i+1 << ": ";
+		   pc_debating();
+		   std::this_thread::sleep_for (std::chrono::seconds(1));
+       }
+    	if (player[i].role == "Hunter" && player[i].life != 0){
+    	   cout << "Player " << i+1 << ": ";
+    	   pc_debating();
+    	   std::this_thread::sleep_for (std::chrono::seconds(1));
+	   }
+		if (player[i].role == "Guard" && player[i].life != 0){
+		   cout << "Player " << i+1 << ": ";
+    	   pc_debating();
+    	   std::this_thread::sleep_for (std::chrono::seconds(1));
+	   }
+	}
+}
 
 
 
+
+//voting
 void vote(){
     int vote, v_index = 0, to_be_voted = 0;
     if (player[11].life != 0){
@@ -392,7 +507,7 @@ void vote(){
             if (game.player_list[i] != 0){
                 int random = rand() % 10;
             //following players
-                if (random < 4){
+                if (random < 2){
                     player[v_index].vote += 1;
                     cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
                 }
@@ -405,6 +520,7 @@ void vote(){
                     cout << "Player " << player[i].player_index + 1 << " " << "voted " << PC_vote + 1 << " " << endl;
                 }//else
             }
+            std::this_thread::sleep_for (std::chrono::seconds(1));
         }//for
     }
     
@@ -455,18 +571,26 @@ void vote(){
 
 
 void daytime(){
-    cout << "Day " << game.turn << endl;
+	cout << "\n";
+    cout << "Day Time" << " "<< game.turn << endl;
     cout << "It's morning, all the survivors come together......" << endl;
+    std::this_thread::sleep_for (std::chrono::seconds(1));
     for (int i = 0; i < 2; i++){
         if (game.killed_tonight[i] != 0){
-            cout << "Player " << game.killed_tonight[i] << " was killed last night!" << endl;
-            game.killed_tonight[i] = 0;
+            cout << "Player " << game.killed_tonight[i] << " was killed last night!" << endl;           
         }
+        if (player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] == 12 ) hunter_player(player);
+        else if(player[game.killed_tonight[i]-1].role == "Hunter" && game.killed_tonight[i] != 12) hunter_PC(player);
+        std::this_thread::sleep_for (std::chrono::seconds(1));
     }
     if (game.killed_tonight[1] == 0 && game.killed_tonight[0] == 0)
         cout << "Last night is a peaceful night! No one died!" << endl;
-    cout << "Debate time" << endl;
-    //debate function
+    game.killed_tonight[0] = 0;
+    game.killed_tonight[1] = 0;
+    
+	cout << "Debate time" << endl;
+    debate();
+    std::this_thread::sleep_for (std::chrono::seconds(1));
     cout << "Voting time" << endl;
     cout << "Please choose one to vote out" << endl;
     for (int i = 0; i < 12; i++){
@@ -534,5 +658,3 @@ int main(int argc, const char * argv[]) {
         cout << "Good people win!" << endl;
     return 0;
 }
-    
-
