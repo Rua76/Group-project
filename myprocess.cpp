@@ -464,15 +464,12 @@ void debate (){
     
         if (player[i].role == "Seer" && player[i].life != 0){
            cout << "Player " << i+1 << ": ";
-           int checking_num;
-           int j=0;
            //get the # of current alive people
-           for (int i=0; i<12; ++i){
-           if (player[i].life > 0) j+=1;
-           }
-           checking_num = rand()%j;
-           bool checking_result = seer_PC_checking(player, checking_num);
-           seer_pc_debating(checking_num, checking_result);
+            int see = rand() % 12;
+        while (game.player_list[see] == 0 || player[see].role == "Seer")
+            see = rand() % 12;
+           bool checking_result = seer_PC_checking(player, see);
+           seer_pc_debating(see, checking_result);
            std::this_thread::sleep_for (std::chrono::seconds(1));
        }
         if (player[i].role == "Witch" && player[i].life != 0){
@@ -515,7 +512,7 @@ void vote(){
                 else{
                     //random voting
                     int PC_vote = rand() % 12;
-                    while (game.player_list[PC_vote] == 0)
+                    while (game.player_list[PC_vote] == 0 || PC_vote == i)
                         PC_vote = rand() % 12;
                     player[PC_vote].vote += 1;
                     cout << "Player " << player[i].player_index + 1 << " " << "voted " << PC_vote + 1 << " " << endl;
@@ -530,7 +527,7 @@ void vote(){
     else if (player[11].life == 0){
         for (int i = 0; i < game.player_num; i++){
                 int PC_vote = rand() % 12;
-                while (game.player_list[PC_vote] == 0)
+                while (game.player_list[PC_vote] == 0 || PC_vote == i)
                     PC_vote = rand() % 12;
                 player[PC_vote].vote += 1;
             if (game.player_list[i] != 0)
