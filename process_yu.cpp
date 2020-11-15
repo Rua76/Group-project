@@ -214,10 +214,31 @@ void night (){
     else
         killed = wolfPC();
     
-    if (player[11].role == "Seer")
-        seerhuman();
-    else
-        seerPC();
+    if (player[11].role == "Seer" && player[11].life != 0){
+        cout << "Hi seer, you have the right to check a person~: "<< endl; 
+		cout << "Which person do you want to check Ah ?: " << endl;
+		//print put current alive people in the game 
+		for (int i=0; i<12; ++i){
+			if (player[i].life > 0) cout <<"[" << i+1 <<"]" << " ";
+		}
+		cout << "\n";
+		//checking
+		int checking_command;  
+		cin >> checking_command;
+        seer_player_checking(player, checking_command);
+    }
+    else{
+        cout << "Hi seer, you have the right to check a person~: "<< endl;
+		cout << "Which person do you want to check Ah ?: " << endl;
+		int checking_num;
+		int j=0;
+		//get the # of current alive people
+		for (int i=0; i<12; ++i){
+		if (player[i].life > 0) j+=1;
+		}
+		checking_num = rand()%j
+        bool checking_result = seer_PC_checking(player, checking_num);
+    }
     
     if (player[11].role == "Witch" && player[11].life != 0)
         witch_player_night(player, killed);
