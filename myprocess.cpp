@@ -27,6 +27,7 @@ struct Game {
     int pc_checking;
     int see;
     bool gb = true;
+    int suspect;
 };
 Game game;
 
@@ -380,7 +381,7 @@ void witch_player_debating(int kill, Player player[12]){
             }//for
             int suspect;
             cin >> suspect;
-            
+            game.suspect = suspect;
             cout<<"Last night I Noticed that Player "<< kill << " has been killed." << endl;
             if (suspect != 0) cout << " I saved him/her and I think player " << suspect << "can be the bad guy.";
             
@@ -504,25 +505,42 @@ void vote(){
         cout << "You voted " << vote << endl;
         v_index = vote -1;
         player[v_index].vote += 1;
+        //other players vote
         for (int i = 0; i < 11; i++){
             if (game.player_list[i] != 0){
                 int random = rand() % 10;
                 //didn't find wolf
                 if (game.gb == 1){
             //following players
-                if (random < 2){
-                    player[v_index].vote += 1;
-                    cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
-                }
-                else{
-                    //random voting
-                    int PC_vote = rand() % 12;
-                    while (game.player_list[PC_vote] == 0 || PC_vote == i)
-                        PC_vote = rand() % 12;
-                    player[PC_vote].vote += 1;
-                    cout << "Player " << player[i].player_index + 1 << " " << "voted " << PC_vote + 1 << " " << endl;
-                } //else
-            }
+                    if (game.suspect == 0){
+                        if (random < 2){
+                            player[v_index].vote += 1;
+                            cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
+                        }
+                        else{
+                            //random voting
+                            int PC_vote = rand() % 12;
+                            while (game.player_list[PC_vote] == 0 || PC_vote == i)
+                                PC_vote = rand() % 12;
+                            player[PC_vote].vote += 1;
+                            cout << "Player " << player[i].player_index + 1 << " " << "voted " << PC_vote + 1 << " " << endl;
+                        } //else
+                    } //sus = 0
+                    else{
+                        if (random < 3){
+                            player[v_index].vote += 1;
+                            cout << "Player " << player[i].player_index + 1 << " " << "voted " << vote << " " << endl;
+                        }
+                        else{
+                            //random voting
+                            int PC_vote = rand() % 12;
+                            while (game.player_list[PC_vote] == 0 || PC_vote == i)
+                                PC_vote = rand() % 12;
+                            player[PC_vote].vote += 1;
+                            cout << "Player " << player[i].player_index + 1 << " " << "voted " << PC_vote + 1 << " " << endl;
+                        }
+                    }
+                }//didn't find wolf
                 //find wolf
                 else{
                     if (i == game.seer_index){
@@ -595,6 +613,7 @@ void vote(){
             game.villager_num -= 1;
             }
 }
+
 
 
 void daytime(){
