@@ -68,13 +68,12 @@ void game_ini (Game game, Player player[12]){
                     case 10:{ player[i].role = "Guard";break; }
                     case 11:{ player[i].role = "Witch" ;break;}
               case 12: { player[i].role = "Hunter" ;break; }
-            }//switch
-           
-    
+            }//switch   
         }
-     cout << "You are the " <<  player[11].role << endl;
-     cout << "Now, enjoy the game." << "\n" << endl;
-     std::this_thread::sleep_for (std::chrono::seconds(3));
+        player[11].role = "Guard" ;
+        cout << "\n";
+        cout << "You are the " << player[11].role << endl;
+        cout << "Now, enjoy your game and try to win." << "\n" << endl;
     }
 
 int wolfhuman (){
@@ -89,8 +88,9 @@ int wolfhuman (){
     cout << "Choose the one to kill tonight: " << endl;
     for (int i = 0; i < 12; i++){
         if (game.goodman_list[i] != 0)
-        cout << game.goodman_list[i] << endl;
+        cout << "[" << game.goodman_list[i] <<"] ";        
     }
+    cout << "\n";
     cin >> themantokill;
     for (int i = 0; i < 12; i++){
         if (player[i].player_index + 1 == themantokill){
@@ -273,11 +273,13 @@ void witch_PC_medicine(Player player[12], int kill, int i){
 
 int guardhuman(){
     int guard;
+    cout << "\n";
     cout << "Choose the one to protect tonight: " << endl;
     for (int i = 0; i < 12; i++){
         if (game.player_list[i] != 0)
-        cout << game.player_list[i] << endl;
+        cout << "[" << game.player_list[i] <<"] ";
     }
+    cout << "\n";
     cin >> guard;
     for (int i = 0; i < 12; i++){
         if (player[i].player_index + 1 == guard)
@@ -488,7 +490,7 @@ void debate (){
     if (player[11].role == "Guard" && player[11].life != 0){
         player_debating();
     }
-    
+    cout << "\n";
     //PC
     for (int i=0; i<11; i++){
         
@@ -678,6 +680,7 @@ void vote(){
 void night (){
     cout << "Night " << game.turn << endl;
     cout << "\n";
+    cout << "Be careful, werewolves are coming." << endl;
     std::this_thread::sleep_for (std::chrono::seconds(1));
     //get list of wolf
     //tell the player if he is wolf
@@ -690,10 +693,14 @@ void night (){
     }
     else
         killed = wolfPC();
+    cout << "--------------------" << "\n";
     
     game.wolf_killed = killed;
     
-    if (player[11].role == "Seer"){
+    cout << "Now things go on..." << "\n";
+    cout << "--------------------" << "\n";
+    
+	if (player[11].role == "Seer"){
            cout << "Hi seer, you have the right to check a person: "<< endl;
         cout << "\n";
         std::this_thread::sleep_for (std::chrono::seconds(1));
@@ -715,8 +722,11 @@ void night (){
            std::this_thread::sleep_for (std::chrono::seconds(1));
            cout << "Which person do you want to check?: " << endl;
        }
-
-    
+	std::this_thread::sleep_for (std::chrono::seconds(1));
+	cout << "\n";
+	cout << "--------------------" << "\n";
+	cout << "Hi witch, gald to have you here." << endl;
+    cout << "\n";
     if (player[11].role == "Witch" && player[11].life != 0)
         witch_player_night(player, killed);
     else if (player[11].role == "Witch" && player[11].life == 0){
@@ -726,6 +736,8 @@ void night (){
     else
         witch_PC_medicine(player, killed, game.witch_index);
     
+	cout << "--------------------" << "\n";
+    cout << "Hi guard, welcome !" << endl;
     if (player[11].role == "Guard" && player[11].life != 0)
         guarded = guardhuman();
     else if (player[11].role == "Guard" && player[11].life == 0){
@@ -736,6 +748,7 @@ void night (){
     else
         guarded = guardPC();
     //at the end of the night
+    cout << "--------------------" << "\n";
     //guard
     if (guarded == killed){
         player[guarded].life = 1;
@@ -780,15 +793,17 @@ void night (){
     } //for
     game.turn++;
     cout << "Night is over......" << endl;
-    cout << "\n";
+    cout << "--------------------" << "\n";
 }//night
 
 void daytime(){
     cout << "\n";
     cout << "Day Time" << " "<< game.turn << endl;
+    cout << "--------------------" << "\n";
     std::this_thread::sleep_for (std::chrono::seconds(1));
     cout << "\n";
     cout << "It's morning, all the survivors come together......" << endl;
+    cout << "--------------------" << "\n";
     std::this_thread::sleep_for (std::chrono::seconds(2));
     for (int i = 0; i < 2; i++){
         if (game.killed_tonight[i] != 0){
@@ -809,11 +824,10 @@ void daytime(){
     
     if (game.killed_tonight[1] == 0 && game.killed_tonight[0] == 0)
         cout << "Last night is a peaceful night! No one died!" << endl;
-    cout << "\n";
     std::this_thread::sleep_for (std::chrono::seconds(1));
     game.killed_tonight[0] = 0;
     game.killed_tonight[1] = 0;
-    
+    cout << "--------------------" << "\n";
     cout << "Debate time" << endl;
     std::this_thread::sleep_for (std::chrono::seconds(1));
     debate();
@@ -822,13 +836,16 @@ void daytime(){
     cout << "Please choose one to vote out" << endl;
     for (int i = 0; i < 12; i++){
         if (game.player_list[i] != 0)
-        cout << game.player_list[i] << endl;
+        cout << "[" << game.player_list[i] <<"] ";       
     }
-    cout << "Number of Gods still alive: " << game.god_num << "\n" << "Number of Villagers still alive: " << game.villager_num << endl;//god/villager pointer
-    
+    cout << "\n";
+    cout << "Current number of Gods that still alive : " << game.god_num << endl;
+	cout << "Current number of Villagers that still alive : " << game.villager_num << endl;//god/villager pointer
+    cout << "--------------------" << "\n";
     //voting
     vote();
-
+	cout << "--------------------" << "\n";
+	cout << "\n"; 
     }
 
 
