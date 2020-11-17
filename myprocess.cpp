@@ -69,9 +69,12 @@ void game_ini (Game game, Player player[12]){
                     case 11:{ player[i].role = "Witch" ;break;}
               case 12: { player[i].role = "Hunter" ;break; }
             }//switch
-            cout << "Player " <<  player[i].player_index+1 << " is " << player[i].role << endl;
+           
     
         }
+     cout << "You are the " <<  player[11].role << endl;
+     cout << "Now, enjoy the game." << "\n" << endl;
+     std::this_thread::sleep_for (std::chrono::seconds(3));
     }
 
 int wolfhuman (){
@@ -821,7 +824,7 @@ void daytime(){
         if (game.player_list[i] != 0)
         cout << game.player_list[i] << endl;
     }
-    cout << game.god_num << " " << game.villager_num << endl;//god/villager pointer
+    cout << "Number of Gods still alive: " << game.god_num << "\n" << "Number of Villagers still alive: " << game.villager_num << endl;//god/villager pointer
     
     //voting
     vote();
