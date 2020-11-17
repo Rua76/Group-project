@@ -26,17 +26,16 @@ void game_ini (Game game, Player player[12]){
               case 2:
               case 3:
               case 4:{ player[i].role = "Villager" ;break;}
-                    case 5:{ player[i].role = "Werewolf" ;break;}
-                    case 6:{ player[i].role = "Seer";break;}
+                    case 5:
+                    case 6:
                     case 7:
                     case 8: { player[i].role = "Werewolf" ;break;}
-                    case 9:{ player[i].role = "Werewolf" ;break;}
+                    case 9:{ player[i].role = "Seer";break;}
                     case 10:{ player[i].role = "Guard";break; }
                     case 11:{ player[i].role = "Witch" ;break;}
               case 12: { player[i].role = "Hunter" ;break; }
             }//switch   
         }
-        player[11].role = "Guard" ;
         cout << "\n";
         cout << "You are the " << player[11].role << endl;
         cout << "Now, enjoy your game and try to win." << "\n" << endl;
@@ -187,7 +186,7 @@ void hunter_PC(Player player[12]){
 }
 
 
-void witch_player_night(Player player[12], int killed){ //death 处引入kill作为被杀人的号码
+void witch_player_night(Player player[12], int killed){ //death 楼露鈥溗澛幻巏ill鈼娝溑掆劉卤陋鈥β甭幻�碌茠鈭増卢脦
     cout << "Tonight Player " << killed + 1<< " has been killed." <<endl;
     cout << "\n";
     cout << "Do you want to save him/her ?" << endl;
@@ -324,7 +323,7 @@ void seer_human_debating(int checking_num, bool checking_result){
 void seer_player_debating(int checking_command){
     ifstream fin;
     fin.open("Seer_Player.txt");
-    string text[3];
+    string text[4];
     int i = 0;
     while (!fin.eof()){
         string inbuf;
@@ -356,8 +355,8 @@ void seer_player_debating(int checking_command){
 
 void witch_player_debating(int kill, Player player[12]){
     ifstream fin;
-            fin.open("Seer_Player.txt");
-            string text[3];
+            fin.open("witch_Player.txt");
+            string text[4];
             int i = 0;
             while (!fin.eof()){
                 string inbuf;
@@ -583,6 +582,9 @@ void vote(){
     
     cout << "The player been voted out is " << to_be_voted + 1 << endl;
     player[to_be_voted].life = 0;
+    if (player[to_be_voted].role == "Hunter")
+        game.hunter_kill = 1;
+    
     for (int i = 0; i < 12; i++){
         player[i].vote = 0;
     }
@@ -887,4 +889,5 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+
 
