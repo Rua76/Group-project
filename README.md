@@ -75,9 +75,9 @@ UID: 3035535080
              
             Villagers do not have any special abilities. They can only vote claim and vote during the daytime.
             
-         - **Oracle**
+         - **Seer**
          
-            As an oracle, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character in the daytime, so every other player will follow you in the voting, but this also exposes you to the werewolves, be careful!
+            As an seer, you can check the identity of a player once a night. The system will tell you if that player is "good" (belongs to good people group) or "bad" (is a werewolf). You can choose to speak out your character in the daytime, so every other player will follow you in the voting, but this also exposes you to the werewolves, be careful!
             
          - **Witch**
          
