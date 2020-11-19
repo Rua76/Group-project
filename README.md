@@ -32,14 +32,8 @@ UID: 3035535080
 2. **Game Rules**
    - **Group Size:**
    
-     - We design this game as a table for 9 - 12 people. Since this is an offline game, the individual player will join in the game with remaining computer players.
+     - We design this game as a table for 12 people. Since this is an offline game, the individual player will join in the game with remaining computer players.
      - Character Distribution:
-       
-        9 Players: 3 Werewolves,  3 Special Villagers, 3 Normal Villagers
-       
-       10 Players: 3 Werewolves,  3 Special Villagers, 4 Normal Villagers
-       
-       11 Players: 3 Werewolves,  4 Special Villagers, 4 Normal Villagers
        
        12 Players: 4 Werewolves,  4 Special Villagers, 4 Normal Villagers
    - **Game Process:**
