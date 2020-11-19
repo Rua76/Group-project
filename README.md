@@ -121,8 +121,8 @@ UID: 3035535080
   - One of the most attractive parts of our game is the inference through clues and texts provided by the system and other players (PCs). Therefore, we require systematic language/text packages for the program to read and write so as to process or record the game.
   
 - [x] **Program Codes in Multiple Files**
-  - As our game is quite a complex one, we need .hpp to systematically declare functions and some variables we need throughout the whole program.
-  - We plan to separate each of our special villager into a particular .cpp in order to make the main.cpp clear for running the main game process.
+  - As our game is quite a complex one, we need .h to systematically declare functions and some variables we need throughout the whole program.
+  - We plan to separate our debating functions into several particular .cpp in order to make the main.cpp clear for running the main game process.
   - Considering situations a character under a player or a PC controls can be quite different, we need similar but different files to achieve this and do our best to let the PC players perform their logic.
        
       
