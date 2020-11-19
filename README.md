@@ -107,7 +107,7 @@ UID: 3035535080
 
 - [x] **Random game sets or status**
    
-   During the game, the logic behind NPC's action involves a random process. For instance, if all werewolves are NPCs, they will randomly choose other players to kill at each night. But once the seer claims her identity, and the guard is still alive, the werewolves have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
+   During the game, the logic behind NPC's action involves a random process. For instance, if all the werewolves are NPCs, they will randomly choose other players to kill at each night. But once the seer claims her identity, and the guard is still alive, the werewolves have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
 
 - [x] **Data structure for storing game status**
 
