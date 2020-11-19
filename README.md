@@ -111,7 +111,7 @@ UID: 3035535080
 
 - [x] **Data structure for storing game status**
 
-   We will use data structures to store the game status, such as arrays, variables, struct, etc. For example, all the players still alive will be stored in an array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. Two structures "Game" and "Player" were implemented in the program for storage of player status and game process.
+   We will use data structures to store the game status, such as arrays, variables, structure, etc. For example, two structures "Game" and "Player" were implemented in the program for storage of player status and game process. All the players still alive will be stored in an array under "Game" structure. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. "Player" structure can record single player status, like life, role, vote, etc.
 
 - [x] **Dynamic Memory Management**
   - At the beginning of the game, the program lets the player to command the number of participants, thus controlling the total memory usage at the start.
