@@ -384,8 +384,8 @@ void witch_player_debating(int kill, Player player[12]){
             int suspect;
             cin >> suspect;
             game.suspect = suspect;
-            cout<<"Last night I Noticed that Player "<< kill << " has been killed." << endl;
-            if (suspect != 0) cout << " I saved him/her and I think player " << suspect << "can be the bad guy.";
+            cout<<"Last night I Noticed that Player "<< kill + 1<< " has been killed." << endl;
+            if (suspect != 0) cout << " I saved him/her and I think player " << suspect << " can be the bad guy.";
             game.revealed = 1;
         }//if
         else {
