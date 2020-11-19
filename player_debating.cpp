@@ -11,7 +11,7 @@
 void player_debating(){
     ifstream fin;
     fin.open("villager_Player.txt");
-    string text[4];
+    string text[5];
     int i = 0;
     while (!fin.eof()){
         string inbuf;
