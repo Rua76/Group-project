@@ -114,7 +114,6 @@ UID: 3035535080
    We will use data structures to store the game status, such as arrays, variables, structure, etc. For example, two structures "Game" and "Player" were implemented in the program for storage of player status and game process. "Game" structure can store the parameters and variable needed for the game process. For example, all the players still alive will be stored in an array under "Game" structure. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. "Player" structure can record single player status, like life, role, vote, etc. This is useful to determine each player's action.
 
 - [x] **Dynamic Memory Management**
-  - At the beginning of the game, the program lets the player to command the number of participants, thus controlling the total memory usage at the start.
   - During the alternating days and nights, variables containing texts and commands from both players and computers will be cleared and reused instead of redeclaring new ones, so as to lessen memory wastage.
   - Also, since we apply randomness during the whole gaming process, lists insertions and deletions will be executed dynamically.
 
