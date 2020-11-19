@@ -118,7 +118,7 @@ UID: 3035535080
   - Also, since we apply randomness during the whole gaming process, lists insertions and deletions will be executed dynamically.
 
 - [x] **File Input/Output**
-  - One of the most attractive parts of our game is the inference through clues and texts provided by the system and other players (PCs). Therefore, we require systematic language/text packages for the program to read and write so as to process or record the game.
+  - One of the most attractive parts of our game is the inference through clues and texts provided by the system and other players (PCs). The program can extract texts from different text files, and player can choose different sentences from them. 
   
 - [x] **Program Codes in Multiple Files**
   - As our game is quite a complex one, we need .h to systematically declare functions and some variables we need throughout the whole program.
