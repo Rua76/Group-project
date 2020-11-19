@@ -26,7 +26,7 @@ UID: 3035535080
      - Obvious things are not always easy. Werewolves have the ability of pretending themselves as people during the daytime and they are smart enough to choose to kill people only at midnight.
      - Considering the ability of werewolves, villagers choose to hold a survivors debate on every morning and vote to lynch a guy they think is a werewolf.
      - **As a player,** 
-       - **if you are the werewolf,** try your best to pretend yourself smartly and apply all your wisdom to kill all the normal/special villagers at midnight with your werewolf friends.
+       - **if you are the werewolf,** try your best to pretend yourself smartly and apply all your wisdom to kill all the normal villagers or special villagers at midnight with your werewolf friends.
        - **if you are the villager,** try your best to protect yourself and others, make use of every clues the system and players provided to figure out werewolves and lynch them through voting.
 
 2. **Game Rules**
