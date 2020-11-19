@@ -96,7 +96,7 @@ UID: 3035535080
             
      - **Bad people:**
      
-       As Bad people, your goal is to kill or execute every good people.
+       As Bad people, your goal is to kill or execute good people.
             
          - **Werewolves**
             
@@ -107,11 +107,11 @@ UID: 3035535080
 
 - [x] **Random game sets or status**
    
-   During the game, the logic behind NPC's action involves a random process. For instance, if all three werewolves are NPCs, they will randomly choose other players to kill at each night. But once the oracle claims her identity, and the guard is still alive, the werewolves have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
+   During the game, the logic behind NPC's action involves a random process. For instance, if all three werewolves are NPCs, they will randomly choose other players to kill at each night. But once the seer claims her identity, and the guard is still alive, the werewolves have to consider whether their attack will be guarded. Therefore, the choices will be given different weights, but the decision will still be made based on random process. 
 
 - [x] **Data structure for storing game status**
 
-   We will use data structures to store the game status, such as arrays, variables, etc. For example, all the players still alive will be stored in an array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. 
+   We will use data structures to store the game status, such as arrays, variables, struct, etc. For example, all the players still alive will be stored in an array. This array will be updated at the end of the night and at the end of the daytime, then the system will carry out checking function on this array to see if the game is set or not. Two structures "Game" and "Player" were implemented in the program for storage of player status and game process.
 
 - [x] **Dynamic Memory Management**
   - At the beginning of the game, the program lets the player to command the number of participants, thus controlling the total memory usage at the start.
