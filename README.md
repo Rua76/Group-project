@@ -122,7 +122,7 @@ UID: 3035535080
   
 - [x] **Program Codes in Multiple Files**
   - As our game is quite a complex one, we need .h to systematically declare functions and some variables we need throughout the whole program.
-  - We separated our debating functions into several particular .cpp in order to make the main.cpp clear for running the main game process.
+  - We separated our debating functions into several particular .cpp in order to make the process.cpp clear for running the main game process.
   - Considering situations a character under a player or a PC controls can be quite different, we need similar but different files to achieve this and do our best to let the PC players perform their logic.
        
       
