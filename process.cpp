@@ -378,6 +378,7 @@ void witch_player_debating(int kill, Player player[12]){
         cout << "Your response: " << text[command-1] << endl;
         if (command == 1 ){
             cout << "Please choose the person you suspect: (input 0 if you are not suspecting anyone) ";
+		cout << "[" << 0 <<"]" << " ";
             for (int i=0; i<11; ++i){
                 if (game.player_list[i] != 0) cout <<"[" << i + 1 <<"]" << " ";
             }//for
